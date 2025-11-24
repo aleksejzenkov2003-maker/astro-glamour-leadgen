@@ -2,6 +2,7 @@ import { useState } from "react";
 import CosmicBackground from "@/components/CosmicBackground";
 import MobileHero from "@/components/MobileHero";
 import SuccessModal from "@/components/SuccessModal";
+import Footer from "@/components/Footer";
 import { toast } from "sonner";
 
 const Index = () => {
@@ -24,10 +25,14 @@ const Index = () => {
   };
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen flex flex-col">
       <CosmicBackground />
       
-      <MobileHero onSubmit={handleFormSubmit} />
+      <div className="flex-1">
+        <MobileHero onSubmit={handleFormSubmit} />
+      </div>
+
+      <Footer />
 
       <SuccessModal
         open={showModal}
