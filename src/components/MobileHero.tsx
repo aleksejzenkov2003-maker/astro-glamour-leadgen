@@ -3,25 +3,26 @@ import { Calendar, MapPin, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import astrologerImage from "@/assets/astrologer.jpg";
-
 interface MobileHeroProps {
-  onSubmit: (data: { date: string; city: string; time: string }) => void;
+  onSubmit: (data: {
+    date: string;
+    city: string;
+    time: string;
+  }) => void;
 }
-
-const MobileHero = ({ onSubmit }: MobileHeroProps) => {
+const MobileHero = ({
+  onSubmit
+}: MobileHeroProps) => {
   const [formData, setFormData] = useState({
     date: "",
     city: "",
-    time: "",
+    time: ""
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
   };
-
-  return (
-    <div className="min-h-screen flex flex-col pb-0">
+  return <div className="min-h-screen flex flex-col pb-0">
       {/* Hero Image Section */}
       <div className="relative flex-shrink-0">
         {/* Title overlay on image */}
@@ -43,16 +44,14 @@ const MobileHero = ({ onSubmit }: MobileHeroProps) => {
               
               {/* Photo */}
               <div className="relative rounded-full overflow-hidden border-4 border-accent/50 shadow-[0_0_60px_rgba(255,216,138,0.4)] aspect-square">
-                <img
-                  src={astrologerImage}
-                  alt="Астролог"
-                  className="w-full h-full object-cover"
-                />
+                <img src={astrologerImage} alt="Астролог" className="w-full h-full object-cover" />
               </div>
 
               {/* Decorative elements */}
               <div className="absolute -top-2 -right-2 text-3xl sm:text-4xl animate-float">⭐</div>
-              <div className="absolute -bottom-2 -left-2 text-2xl sm:text-3xl animate-float" style={{ animationDelay: "0.5s" }}>✨</div>
+              <div className="absolute -bottom-2 -left-2 text-2xl sm:text-3xl animate-float" style={{
+              animationDelay: "0.5s"
+            }}>✨</div>
             </div>
           </div>
         </div>
@@ -76,77 +75,45 @@ const MobileHero = ({ onSubmit }: MobileHeroProps) => {
             {/* Date */}
             <div className="relative">
               <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary z-10" />
-              <Input
-                type="date"
-                value={formData.date}
-                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
-                required
-              />
+              <Input type="date" value={formData.date} onChange={e => setFormData({
+              ...formData,
+              date: e.target.value
+            })} className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300" required />
             </div>
 
             {/* City */}
             <div className="relative">
               <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary z-10" />
-              <Input
-                type="text"
-                value={formData.city}
-                onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
-                placeholder="Город рождения"
-                required
-              />
+              <Input type="text" value={formData.city} onChange={e => setFormData({
+              ...formData,
+              city: e.target.value
+            })} className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300" placeholder="Город рождения" required />
             </div>
 
             {/* Time */}
             <div className="relative">
               <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary z-10" />
-              <Input
-                type="time"
-                value={formData.time}
-                onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
-                required
-              />
+              <Input type="time" value={formData.time} onChange={e => setFormData({
+              ...formData,
+              time: e.target.value
+            })} className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300" required />
             </div>
 
             {/* Submit button */}
-            <Button
-              type="submit"
-              className="w-full h-14 text-base font-bold bg-gradient-gold hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)]"
-            >
+            <Button type="submit" className="w-full h-14 text-base font-bold bg-gradient-gold hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)]">
               ✨ Получить анализ ✨
             </Button>
           </form>
 
           {/* Phone number */}
-          <div className="text-center pt-2">
-            <a 
-              href="tel:+79061827229" 
-              className="text-xl font-bold text-foreground hover:text-accent transition-colors"
-            >
-              +7 (906) 182 72 29
-            </a>
-          </div>
+          
 
           {/* WhatsApp button */}
-          <a
-            href="https://wa.me/79061827229"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <Button
-              type="button"
-              className="w-full h-12 text-sm font-semibold bg-[#25D366] hover:bg-[#128C7E] text-white transition-colors duration-300"
-            >
-              Написать на WhatsApp
-            </Button>
+          <a href="https://wa.me/79061827229" target="_blank" rel="noopener noreferrer" className="block">
+            
           </a>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default MobileHero;
