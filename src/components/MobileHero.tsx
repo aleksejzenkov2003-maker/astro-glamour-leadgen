@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { Calendar, User, Phone } from "lucide-react";
+import { Calendar, MapPin, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import astrologerImage from "@/assets/astrologer.jpg";
 
 interface MobileHeroProps {
-  onSubmit: (data: { date: string; name: string; phone: string }) => void;
+  onSubmit: (data: { date: string; city: string; time: string }) => void;
 }
 
 const MobileHero = ({ onSubmit }: MobileHeroProps) => {
   const [formData, setFormData] = useState({
     date: "",
-    name: "",
-    phone: "",
+    city: "",
+    time: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -85,28 +85,27 @@ const MobileHero = ({ onSubmit }: MobileHeroProps) => {
               />
             </div>
 
-            {/* Name */}
+            {/* City */}
             <div className="relative">
-              <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary z-10" />
+              <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary z-10" />
               <Input
                 type="text"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                value={formData.city}
+                onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                 className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
-                placeholder="Введите ваше имя"
+                placeholder="Город рождения"
                 required
               />
             </div>
 
-            {/* Phone */}
+            {/* Time */}
             <div className="relative">
-              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary z-10" />
+              <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary z-10" />
               <Input
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                type="time"
+                value={formData.time}
+                onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                 className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
-                placeholder="+7 (___) ___-__-__"
                 required
               />
             </div>

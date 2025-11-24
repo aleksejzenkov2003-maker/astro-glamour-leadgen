@@ -9,7 +9,7 @@ const Index = () => {
   const [showModal, setShowModal] = useState(false);
   const [orderNumber, setOrderNumber] = useState("");
 
-  const handleFormSubmit = (data: { date: string; name: string; phone: string }) => {
+  const handleFormSubmit = (data: { date: string; city: string; time: string }) => {
     // Generate random 4-digit order number
     const randomOrderNumber = Math.floor(1000 + Math.random() * 9000).toString();
     setOrderNumber(randomOrderNumber);
