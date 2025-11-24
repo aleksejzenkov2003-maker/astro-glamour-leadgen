@@ -21,24 +21,23 @@ const MobileHero = ({ onSubmit }: MobileHeroProps) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col pb-0">
       {/* Hero Image Section */}
       <div className="relative flex-shrink-0">
         {/* Title overlay on image */}
-        <div className="absolute top-8 left-0 right-0 z-10 px-6 space-y-3">
-          <h1 className="text-3xl font-bold text-foreground text-center leading-tight">
+        <div className="absolute top-6 left-0 right-0 z-10 px-4 space-y-2">
+          <h1 className="text-2xl font-bold text-foreground text-center leading-tight">
             Астролог с 20-летним опытом
           </h1>
-          <p className="text-lg text-gradient-mystical font-semibold text-center">
+          <p className="text-base text-gradient-mystical font-semibold text-center">
             Провела более 20 000 консультаций
           </p>
         </div>
 
         {/* Astrologer photo with glow */}
-        <div className="relative pt-32 pb-8">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
-          <div className="relative px-6">
-            <div className="relative group mx-auto max-w-sm">
+        <div className="relative pt-24 pb-6">
+          <div className="relative px-4">
+            <div className="relative group mx-auto max-w-[280px]">
               {/* Glow effect */}
               <div className="absolute -inset-4 bg-gradient-to-r from-primary via-accent to-secondary rounded-full opacity-30 group-hover:opacity-50 blur-2xl transition-opacity duration-500 animate-pulse-glow" />
               
@@ -52,48 +51,48 @@ const MobileHero = ({ onSubmit }: MobileHeroProps) => {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute -top-2 -right-2 text-5xl animate-float">⭐</div>
-              <div className="absolute -bottom-2 -left-2 text-4xl animate-float" style={{ animationDelay: "0.5s" }}>✨</div>
+              <div className="absolute -top-2 -right-2 text-4xl animate-float">⭐</div>
+              <div className="absolute -bottom-2 -left-2 text-3xl animate-float" style={{ animationDelay: "0.5s" }}>✨</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Form Section */}
-      <div className="flex-1 px-6 pb-8">
-        <div className="max-w-md mx-auto space-y-6">
+      <div className="flex-1 px-4 pb-6">
+        <div className="max-w-md mx-auto space-y-4">
           {/* Main offer */}
-          <div className="bg-card/20 backdrop-blur-md border-2 border-accent/30 rounded-2xl p-6 glow-mystical">
-            <p className="text-xl font-bold text-gradient-gold leading-tight text-center">
+          <div className="bg-card/20 backdrop-blur-md border-2 border-accent/30 rounded-2xl p-4 glow-mystical">
+            <p className="text-lg font-bold text-gradient-gold leading-tight text-center">
               ⭐ Только сегодня получите бесплатный астрологический анализ судьбы
             </p>
-            <p className="text-base text-muted-foreground italic text-center mt-2">
+            <p className="text-sm text-muted-foreground italic text-center mt-2">
               — по дате вашего рождения —
             </p>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3">
             {/* Date */}
             <div className="relative">
-              <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary z-10" />
+              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary z-10" />
               <Input
                 type="date"
                 value={formData.date}
                 onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                className="h-14 pl-12 text-base border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
+                className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
                 required
               />
             </div>
 
             {/* Name */}
             <div className="relative">
-              <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary z-10" />
+              <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary z-10" />
               <Input
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="h-14 pl-12 text-base border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
+                className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
                 placeholder="Введите ваше имя"
                 required
               />
@@ -101,12 +100,12 @@ const MobileHero = ({ onSubmit }: MobileHeroProps) => {
 
             {/* Phone */}
             <div className="relative">
-              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary z-10" />
+              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary z-10" />
               <Input
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="h-14 pl-12 text-base border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
+                className="h-12 pl-10 text-sm border-2 border-primary/50 bg-background/80 focus:border-secondary focus:ring-2 focus:ring-secondary/50 glow-mystical transition-all duration-300"
                 placeholder="+7 (___) ___-__-__"
                 required
               />
@@ -115,17 +114,17 @@ const MobileHero = ({ onSubmit }: MobileHeroProps) => {
             {/* Submit button */}
             <Button
               type="submit"
-              className="w-full h-16 text-lg font-bold bg-gradient-gold hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)]"
+              className="w-full h-14 text-base font-bold bg-gradient-gold hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)]"
             >
               ✨ Получить анализ ✨
             </Button>
           </form>
 
           {/* Phone number */}
-          <div className="text-center pt-4">
+          <div className="text-center pt-2">
             <a 
               href="tel:+79061827229" 
-              className="text-2xl font-bold text-foreground hover:text-accent transition-colors"
+              className="text-xl font-bold text-foreground hover:text-accent transition-colors"
             >
               +7 (906) 182 72 29
             </a>
@@ -140,7 +139,7 @@ const MobileHero = ({ onSubmit }: MobileHeroProps) => {
           >
             <Button
               type="button"
-              className="w-full h-14 text-base font-semibold bg-[#25D366] hover:bg-[#128C7E] text-white transition-colors duration-300"
+              className="w-full h-12 text-sm font-semibold bg-[#25D366] hover:bg-[#128C7E] text-white transition-colors duration-300"
             >
               Написать на WhatsApp
             </Button>
