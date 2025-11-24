@@ -1,6 +1,6 @@
 import { useState } from "react";
-import DarkBackground from "@/components/DarkBackground";
-import MainForm from "@/components/MainForm";
+import CosmicBackground from "@/components/CosmicBackground";
+import MobileHero from "@/components/MobileHero";
 import SuccessModal from "@/components/SuccessModal";
 import { toast } from "sonner";
 
@@ -25,9 +25,9 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen">
-      <DarkBackground />
+      <CosmicBackground />
       
-      <MainForm onSubmit={handleFormSubmit} />
+      <MobileHero onSubmit={handleFormSubmit} />
 
       <SuccessModal
         open={showModal}
