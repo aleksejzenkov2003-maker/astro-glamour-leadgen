@@ -25,19 +25,19 @@ const MobileHero = ({ onSubmit }: MobileHeroProps) => {
       {/* Hero Image Section */}
       <div className="relative flex-shrink-0">
         {/* Title overlay on image */}
-        <div className="absolute top-6 left-0 right-0 z-10 px-4 space-y-2">
-          <h1 className="text-2xl font-bold text-foreground text-center leading-tight">
+        <div className="absolute top-4 left-0 right-0 z-10 px-3 space-y-1.5">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground text-center leading-snug drop-shadow-lg">
             Астролог с 20-летним опытом
           </h1>
-          <p className="text-base text-gradient-mystical font-semibold text-center">
+          <p className="text-sm sm:text-base text-gradient-mystical font-semibold text-center drop-shadow-md">
             Провела более 20 000 консультаций
           </p>
         </div>
 
         {/* Astrologer photo with glow */}
-        <div className="relative pt-24 pb-6">
+        <div className="relative pt-20 sm:pt-24 pb-4 sm:pb-6">
           <div className="relative px-4">
-            <div className="relative group mx-auto max-w-[280px]">
+            <div className="relative group mx-auto max-w-[260px] sm:max-w-[280px]">
               {/* Glow effect */}
               <div className="absolute -inset-4 bg-gradient-to-r from-primary via-accent to-secondary rounded-full opacity-30 group-hover:opacity-50 blur-2xl transition-opacity duration-500 animate-pulse-glow" />
               
@@ -51,8 +51,8 @@ const MobileHero = ({ onSubmit }: MobileHeroProps) => {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute -top-2 -right-2 text-4xl animate-float">⭐</div>
-              <div className="absolute -bottom-2 -left-2 text-3xl animate-float" style={{ animationDelay: "0.5s" }}>✨</div>
+              <div className="absolute -top-2 -right-2 text-3xl sm:text-4xl animate-float">⭐</div>
+              <div className="absolute -bottom-2 -left-2 text-2xl sm:text-3xl animate-float" style={{ animationDelay: "0.5s" }}>✨</div>
             </div>
           </div>
         </div>
