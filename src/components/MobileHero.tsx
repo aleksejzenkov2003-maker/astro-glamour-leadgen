@@ -47,11 +47,17 @@ const MobileHero = ({
                 <img src={astrologerImage} alt="Астролог" className="w-full h-full object-cover" />
               </div>
 
-              {/* Decorative elements */}
+              {/* Floating mystical elements around photo */}
               <div className="absolute -top-2 -right-2 text-3xl sm:text-4xl animate-float">⭐</div>
-              <div className="absolute -bottom-2 -left-2 text-2xl sm:text-3xl animate-float" style={{
-              animationDelay: "0.5s"
-            }}>✨</div>
+              <div className="absolute -bottom-2 -left-2 text-2xl sm:text-3xl animate-float" style={{animationDelay: "0.5s"}}>✨</div>
+              <div className="absolute top-1/4 -left-4 text-2xl animate-float" style={{animationDelay: "1s"}}>🌙</div>
+              <div className="absolute top-1/4 -right-4 text-xl animate-float" style={{animationDelay: "1.5s"}}>🔮</div>
+              <div className="absolute bottom-1/4 -left-3 text-lg animate-float" style={{animationDelay: "2s"}}>✨</div>
+              <div className="absolute bottom-1/4 -right-3 text-xl animate-float" style={{animationDelay: "2.5s"}}>⭐</div>
+              
+              {/* Spinning circles */}
+              <div className="absolute inset-0 border-2 border-accent/20 rounded-full animate-[spin_20s_linear_infinite]" />
+              <div className="absolute inset-4 border-2 border-primary/20 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
             </div>
           </div>
         </div>
@@ -61,11 +67,17 @@ const MobileHero = ({
       <div className="flex-1 px-4 pb-6">
         <div className="max-w-md mx-auto space-y-4">
           {/* Main offer */}
-          <div className="bg-card/20 backdrop-blur-md border-2 border-accent/30 rounded-2xl p-4 glow-mystical">
-            <p className="text-lg font-bold text-gradient-gold leading-tight text-center">
+          <div className="relative bg-card/20 backdrop-blur-md border-2 border-accent/30 rounded-2xl p-4 glow-mystical overflow-hidden">
+            {/* Sparkles */}
+            <div className="absolute top-2 left-4 text-yellow-300 animate-pulse" style={{animationDelay: "0s"}}>✨</div>
+            <div className="absolute top-3 right-6 text-yellow-200 animate-pulse" style={{animationDelay: "0.5s"}}>⭐</div>
+            <div className="absolute bottom-2 left-8 text-yellow-300 animate-pulse" style={{animationDelay: "1s"}}>✨</div>
+            <div className="absolute bottom-3 right-4 text-yellow-200 animate-pulse" style={{animationDelay: "1.5s"}}>⭐</div>
+            
+            <p className="text-lg font-bold text-gradient-gold leading-tight text-center relative z-10">
               ⭐ Только сегодня получите бесплатный астрологический анализ судьбы
             </p>
-            <p className="text-sm text-muted-foreground italic text-center mt-2">
+            <p className="text-sm text-muted-foreground italic text-center mt-2 relative z-10">
               — по дате вашего рождения —
             </p>
           </div>
@@ -100,8 +112,10 @@ const MobileHero = ({
             </div>
 
             {/* Submit button */}
-            <Button type="submit" className="w-full h-14 text-base font-bold bg-gradient-gold hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)]">
-              ✨ Получить анализ ✨
+            <Button type="submit" className="relative w-full h-14 text-base font-bold bg-gradient-gold hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] overflow-hidden group">
+              <span className="relative z-10">✨ Получить анализ ✨</span>
+              {/* Animated shimmer effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             </Button>
           </form>
 
