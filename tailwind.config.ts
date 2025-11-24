@@ -102,8 +102,9 @@ export default {
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
       backgroundImage: {
-        "gradient-gold": "linear-gradient(135deg, hsl(45 95% 65%), hsl(45 100% 75%), hsl(40 90% 60%))",
-        "gradient-sepia": "linear-gradient(180deg, hsl(25 20% 8%), hsl(25 20% 15%))",
+        "gradient-cosmic": "linear-gradient(135deg, hsl(230 50% 40%), hsl(265 70% 55%), hsl(195 100% 50%))",
+        "gradient-gold": "linear-gradient(135deg, hsl(45 100% 70%), hsl(45 100% 85%), hsl(35 100% 65%))",
+        "gradient-mystical": "linear-gradient(180deg, hsl(265 70% 55% / 0.3), hsl(195 100% 50% / 0.2))",
       },
     },
   },

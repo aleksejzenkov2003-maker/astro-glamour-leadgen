@@ -8,50 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 25 20% 12%;
+    --background: 230 35% 15%;
     --foreground: 0 0% 100%;
 
-    --card: 25 18% 15%;
+    --card: 230 30% 18%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 25 18% 15%;
+    --popover: 230 30% 18%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 30 30% 35%;
+    --primary: 265 80% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 35 40% 50%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 195 100% 60%;
+    --secondary-foreground: 230 35% 15%;
 
-    --muted: 25 15% 20%;
-    --muted-foreground: 30 10% 60%;
+    --muted: 230 25% 25%;
+    --muted-foreground: 220 15% 70%;
 
-    --accent: 45 95% 65%;
-    --accent-foreground: 25 20% 12%;
+    --accent: 45 100% 70%;
+    --accent-foreground: 230 35% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 20% 25%;
-    --input: 25 15% 18%;
-    --ring: 45 95% 65%;
+    --border: 230 25% 30%;
+    --input: 230 25% 25%;
+    --ring: 265 80% 65%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
     
-    --gold: 45 95% 65%;
-    --gold-shimmer: 45 100% 75%;
-    --sepia: 30 30% 35%;
-    --dark-brown: 25 20% 12%;
+    --cosmic-blue: 230 50% 40%;
+    --cosmic-cyan: 195 100% 50%;
+    --cosmic-purple: 265 70% 55%;
+    --gold: 45 100% 70%;
+    --gold-shimmer: 45 100% 85%;
+    --pink-glow: 320 75% 70%;
     
-    --gradient-gold: linear-gradient(135deg, hsl(45 95% 65%), hsl(45 100% 75%), hsl(40 90% 60%));
-    --gradient-sepia: linear-gradient(180deg, hsl(25 20% 8%), hsl(25 20% 15%));
+    --gradient-cosmic: linear-gradient(135deg, hsl(230 50% 40%), hsl(265 70% 55%), hsl(195 100% 50%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 70%), hsl(45 100% 85%), hsl(35 100% 65%));
+    --gradient-mystical: linear-gradient(180deg, hsl(265 70% 55% / 0.3), hsl(195 100% 50% / 0.2));
     
-    --shadow-gold: 0 0 30px hsl(var(--gold) / 0.4);
-    --shadow-candle: 0 0 40px hsl(40 100% 50% / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.5);
+    --shadow-gold: 0 0 20px hsl(var(--gold) / 0.6);
     
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -71,7 +74,7 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 25 20% 12%;
+    --background: 230 35% 15%;
     --foreground: 0 0% 100%;
   }
 }
@@ -81,20 +84,24 @@ All colors MUST be HSL.
     @apply bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--gold-shimmer))] to-[hsl(var(--gold))] bg-clip-text text-transparent;
   }
   
-  .glow-gold {
-    text-shadow: 0 0 30px hsl(var(--gold) / 0.6), 0 0 50px hsl(var(--gold) / 0.3);
+  .text-gradient-mystical {
+    @apply bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--pink-glow))] to-[hsl(var(--secondary))] bg-clip-text text-transparent;
   }
   
-  .glow-candle {
-    box-shadow: 0 0 40px hsl(40 100% 50% / 0.3), 0 0 80px hsl(40 100% 50% / 0.15);
+  .glow-gold {
+    text-shadow: 0 0 20px hsl(var(--gold) / 0.8), 0 0 40px hsl(var(--gold) / 0.5);
+  }
+  
+  .glow-mystical {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6), 0 0 60px hsl(var(--primary) / 0.3);
   }
   
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
   
-  .animate-flicker {
-    animation: flicker 2s ease-in-out infinite;
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
   }
   
   @keyframes float {
@@ -102,14 +109,36 @@ All colors MUST be HSL.
     50% { transform: translateY(-10px); }
   }
   
-  @keyframes flicker {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  
+  @keyframes stars {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-1000px); }
   }
   
   @keyframes pulse-glow {
-    0%, 100% { opacity: 1; filter: brightness(1); }
-    50% { opacity: 0.85; filter: brightness(1.1); }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  
+  @keyframes comet {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(200vw) translateY(200vh) rotate(45deg);
+      opacity: 0;
+    }
   }
 }
 
