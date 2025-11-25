@@ -25,7 +25,7 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
 
   const scrollToIndex = (ref: React.RefObject<HTMLDivElement>, index: number) => {
     if (ref.current) {
-      const itemHeight = 56; // h-14 = 56px
+      const itemHeight = 48; // h-12 = 48px
       const containerHeight = ref.current.clientHeight;
       const scrollTop = index * itemHeight - (containerHeight / 2) + (itemHeight / 2);
       ref.current.scrollTop = scrollTop;
@@ -81,25 +81,25 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
   };
 
   return (
-    <div className="relative w-full bg-card backdrop-blur-md border-2 border-primary/40 rounded-2xl p-4 glow-mystical flex flex-col min-h-0">
-      <div className="grid grid-cols-3 gap-2 flex-1 min-h-0">
+    <div className="relative w-full bg-card backdrop-blur-md border-2 border-primary/40 rounded-2xl p-4 glow-mystical">
+      <div className="grid grid-cols-3 gap-2 h-[240px]">
         {/* Month */}
-        <div className="flex flex-col items-center min-h-0">
-          <div className="text-xs text-muted-foreground mb-2 font-semibold flex-shrink-0">Month</div>
+        <div className="flex flex-col items-center h-full">
+          <div className="text-xs text-muted-foreground mb-2 font-semibold">Month</div>
           <div 
             ref={monthRef}
-            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient w-full"
+            className="flex-1 overflow-y-scroll scrollbar-hide relative w-full"
             style={{ scrollBehavior: 'smooth' }}
           >
-            <div className="py-[120px]">
+            <div className="py-[96px]">
               {months.map((month, index) => (
                 <div
                   key={month}
                   onClick={() => handleMonthClick(index)}
-                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-200 ${
+                  className={`h-12 flex items-center justify-center cursor-pointer transition-all duration-200 ${
                     selectedMonth === index
                       ? 'text-gold text-base font-bold'
-                      : 'text-muted-foreground/60 text-sm hover:text-muted-foreground'
+                      : 'text-muted-foreground/50 text-xs hover:text-muted-foreground'
                   }`}
                 >
                   {month}
@@ -110,22 +110,22 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
         </div>
 
         {/* Day */}
-        <div className="flex flex-col items-center min-h-0">
-          <div className="text-xs text-muted-foreground mb-2 font-semibold flex-shrink-0">Day</div>
+        <div className="flex flex-col items-center h-full">
+          <div className="text-xs text-muted-foreground mb-2 font-semibold">Day</div>
           <div 
             ref={dayRef}
-            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient w-full"
+            className="flex-1 overflow-y-scroll scrollbar-hide relative w-full"
             style={{ scrollBehavior: 'smooth' }}
           >
-            <div className="py-[120px]">
+            <div className="py-[96px]">
               {days.map((day) => (
                 <div
                   key={day}
                   onClick={() => handleDayClick(day)}
-                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-200 ${
+                  className={`h-12 flex items-center justify-center cursor-pointer transition-all duration-200 ${
                     selectedDay === day
                       ? 'text-gold text-base font-bold'
-                      : 'text-muted-foreground/60 text-sm hover:text-muted-foreground'
+                      : 'text-muted-foreground/50 text-xs hover:text-muted-foreground'
                   }`}
                 >
                   {day}
@@ -136,22 +136,22 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
         </div>
 
         {/* Year */}
-        <div className="flex flex-col items-center min-h-0">
-          <div className="text-xs text-muted-foreground mb-2 font-semibold flex-shrink-0">Year</div>
+        <div className="flex flex-col items-center h-full">
+          <div className="text-xs text-muted-foreground mb-2 font-semibold">Year</div>
           <div 
             ref={yearRef}
-            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient w-full"
+            className="flex-1 overflow-y-scroll scrollbar-hide relative w-full"
             style={{ scrollBehavior: 'smooth' }}
           >
-            <div className="py-[120px]">
+            <div className="py-[96px]">
               {years.map((year, index) => (
                 <div
                   key={year}
                   onClick={() => handleYearClick(year, index)}
-                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-200 ${
+                  className={`h-12 flex items-center justify-center cursor-pointer transition-all duration-200 ${
                     selectedYear === year
                       ? 'text-gold text-base font-bold'
-                      : 'text-muted-foreground/60 text-sm hover:text-muted-foreground'
+                      : 'text-muted-foreground/50 text-xs hover:text-muted-foreground'
                   }`}
                 >
                   {year}
@@ -163,7 +163,7 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
       </div>
 
       {/* Center highlight line */}
-      <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-14 border-y border-gold/30 pointer-events-none" />
+      <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-12 border-y border-gold/40 pointer-events-none rounded" />
       
       <style>{`
         .scrollbar-hide::-webkit-scrollbar {
@@ -172,22 +172,6 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
-        }
-        .mask-gradient {
-          mask-image: linear-gradient(
-            to bottom,
-            transparent 0%,
-            black 25%,
-            black 75%,
-            transparent 100%
-          );
-          -webkit-mask-image: linear-gradient(
-            to bottom,
-            transparent 0%,
-            black 25%,
-            black 75%,
-            transparent 100%
-          );
         }
       `}</style>
     </div>
