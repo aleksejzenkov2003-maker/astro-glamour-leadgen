@@ -23,12 +23,40 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
   const dayRef = useRef<HTMLDivElement>(null);
   const yearRef = useRef<HTMLDivElement>(null);
 
+  const scrollToIndex = (ref: React.RefObject<HTMLDivElement>, index: number) => {
+    if (ref.current) {
+      const itemHeight = 56; // h-14 = 56px
+      const containerHeight = ref.current.clientHeight;
+      const scrollTop = index * itemHeight - (containerHeight / 2) + (itemHeight / 2);
+      ref.current.scrollTop = scrollTop;
+    }
+  };
+
+  // Initial scroll on mount
+  useEffect(() => {
+    setTimeout(() => {
+      scrollToIndex(monthRef, selectedMonth);
+      scrollToIndex(dayRef, selectedDay - 1);
+      scrollToIndex(yearRef, 0);
+    }, 100);
+  }, []);
+
   useEffect(() => {
     if (value) {
       const date = new Date(value);
-      setSelectedMonth(date.getMonth());
-      setSelectedDay(date.getDate());
-      setSelectedYear(date.getFullYear());
+      const month = date.getMonth();
+      const day = date.getDate();
+      const year = date.getFullYear();
+      
+      setSelectedMonth(month);
+      setSelectedDay(day);
+      setSelectedYear(year);
+      
+      setTimeout(() => {
+        scrollToIndex(monthRef, month);
+        scrollToIndex(dayRef, day - 1);
+        scrollToIndex(yearRef, years.indexOf(year));
+      }, 50);
     }
   }, [value]);
 
@@ -37,36 +65,41 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
     onChange(dateStr);
   }, [selectedMonth, selectedDay, selectedYear, onChange]);
 
-  const scrollToCenter = (ref: React.RefObject<HTMLDivElement>, index: number) => {
-    if (ref.current) {
-      const itemHeight = 56;
-      ref.current.scrollTop = index * itemHeight - itemHeight * 2;
-    }
+  const handleMonthClick = (index: number) => {
+    setSelectedMonth(index);
+    scrollToIndex(monthRef, index);
+  };
+
+  const handleDayClick = (day: number) => {
+    setSelectedDay(day);
+    scrollToIndex(dayRef, day - 1);
+  };
+
+  const handleYearClick = (year: number, index: number) => {
+    setSelectedYear(year);
+    scrollToIndex(yearRef, index);
   };
 
   return (
-    <div className="relative w-full bg-card backdrop-blur-md border-2 border-primary/40 rounded-2xl p-6 glow-mystical">
-      <div className="grid grid-cols-3 gap-2 h-[280px] relative z-10">
+    <div className="relative w-full bg-card backdrop-blur-md border-2 border-primary/40 rounded-2xl p-4 glow-mystical flex flex-col min-h-0">
+      <div className="grid grid-cols-3 gap-2 flex-1 min-h-0">
         {/* Month */}
-        <div className="flex flex-col items-center">
-          <div className="text-xs text-muted-foreground mb-2 font-semibold">Month</div>
+        <div className="flex flex-col items-center min-h-0">
+          <div className="text-xs text-muted-foreground mb-2 font-semibold flex-shrink-0">Month</div>
           <div 
             ref={monthRef}
-            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient z-20"
+            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient w-full"
             style={{ scrollBehavior: 'smooth' }}
           >
-            <div className="py-24">
+            <div className="py-[120px]">
               {months.map((month, index) => (
                 <div
                   key={month}
-                  onClick={() => {
-                    setSelectedMonth(index);
-                    scrollToCenter(monthRef, index);
-                  }}
-                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-300 relative z-30 ${
+                  onClick={() => handleMonthClick(index)}
+                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-200 ${
                     selectedMonth === index
-                      ? 'text-gold text-lg font-bold scale-110 glow-gold'
-                      : 'text-muted-foreground text-sm hover:text-foreground'
+                      ? 'text-gold text-base font-bold'
+                      : 'text-muted-foreground/60 text-sm hover:text-muted-foreground'
                   }`}
                 >
                   {month}
@@ -77,25 +110,22 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
         </div>
 
         {/* Day */}
-        <div className="flex flex-col items-center">
-          <div className="text-xs text-muted-foreground mb-2 font-semibold">Day</div>
+        <div className="flex flex-col items-center min-h-0">
+          <div className="text-xs text-muted-foreground mb-2 font-semibold flex-shrink-0">Day</div>
           <div 
             ref={dayRef}
-            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient z-20"
+            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient w-full"
             style={{ scrollBehavior: 'smooth' }}
           >
-            <div className="py-24">
+            <div className="py-[120px]">
               {days.map((day) => (
                 <div
                   key={day}
-                  onClick={() => {
-                    setSelectedDay(day);
-                    scrollToCenter(dayRef, day - 1);
-                  }}
-                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-300 relative z-30 ${
+                  onClick={() => handleDayClick(day)}
+                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-200 ${
                     selectedDay === day
-                      ? 'text-gold text-lg font-bold scale-110 glow-gold'
-                      : 'text-muted-foreground text-sm hover:text-foreground'
+                      ? 'text-gold text-base font-bold'
+                      : 'text-muted-foreground/60 text-sm hover:text-muted-foreground'
                   }`}
                 >
                   {day}
@@ -106,25 +136,22 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
         </div>
 
         {/* Year */}
-        <div className="flex flex-col items-center">
-          <div className="text-xs text-muted-foreground mb-2 font-semibold">Year</div>
+        <div className="flex flex-col items-center min-h-0">
+          <div className="text-xs text-muted-foreground mb-2 font-semibold flex-shrink-0">Year</div>
           <div 
             ref={yearRef}
-            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient z-20"
+            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient w-full"
             style={{ scrollBehavior: 'smooth' }}
           >
-            <div className="py-24">
+            <div className="py-[120px]">
               {years.map((year, index) => (
                 <div
                   key={year}
-                  onClick={() => {
-                    setSelectedYear(year);
-                    scrollToCenter(yearRef, index);
-                  }}
-                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-300 relative z-30 ${
+                  onClick={() => handleYearClick(year, index)}
+                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-200 ${
                     selectedYear === year
-                      ? 'text-gold text-lg font-bold scale-110 glow-gold'
-                      : 'text-muted-foreground text-sm hover:text-foreground'
+                      ? 'text-gold text-base font-bold'
+                      : 'text-muted-foreground/60 text-sm hover:text-muted-foreground'
                   }`}
                 >
                   {year}
@@ -136,7 +163,7 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
       </div>
 
       {/* Center highlight line */}
-      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-14 border-y-2 border-primary/30 pointer-events-none z-5" />
+      <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-14 border-y border-gold/30 pointer-events-none" />
       
       <style>{`
         .scrollbar-hide::-webkit-scrollbar {
@@ -150,8 +177,15 @@ const MysticalDatePicker = ({ value, onChange }: MysticalDatePickerProps) => {
           mask-image: linear-gradient(
             to bottom,
             transparent 0%,
-            black 20%,
-            black 80%,
+            black 25%,
+            black 75%,
+            transparent 100%
+          );
+          -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 25%,
+            black 75%,
             transparent 100%
           );
         }
