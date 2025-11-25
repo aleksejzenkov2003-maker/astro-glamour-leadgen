@@ -36,14 +36,14 @@ const MysticalTimePicker = ({ value, onChange }: MysticalTimePickerProps) => {
   };
 
   return (
-    <div className="w-full bg-card/60 backdrop-blur-md border-2 border-primary/40 rounded-2xl p-6 glow-mystical">
-      <div className="grid grid-cols-2 gap-6 h-[280px]">
+    <div className="relative w-full bg-card backdrop-blur-md border-2 border-primary/40 rounded-2xl p-6 glow-mystical">
+      <div className="grid grid-cols-2 gap-6 h-[280px] relative z-10">
         {/* Hours */}
         <div className="flex flex-col items-center">
           <div className="text-xs text-muted-foreground mb-2 font-semibold">Hours</div>
           <div 
             ref={hourRef}
-            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient w-full"
+            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient w-full z-20"
             style={{ scrollBehavior: 'smooth' }}
           >
             <div className="py-24">
@@ -54,7 +54,7 @@ const MysticalTimePicker = ({ value, onChange }: MysticalTimePickerProps) => {
                     setSelectedHour(hour);
                     scrollToCenter(hourRef, hour);
                   }}
-                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-300 ${
+                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-300 relative z-30 ${
                     selectedHour === hour
                       ? 'text-gold text-2xl font-bold scale-110 glow-gold'
                       : 'text-muted-foreground text-base hover:text-foreground'
@@ -72,7 +72,7 @@ const MysticalTimePicker = ({ value, onChange }: MysticalTimePickerProps) => {
           <div className="text-xs text-muted-foreground mb-2 font-semibold">Minutes</div>
           <div 
             ref={minuteRef}
-            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient w-full"
+            className="flex-1 overflow-y-auto scrollbar-hide relative mask-gradient w-full z-20"
             style={{ scrollBehavior: 'smooth' }}
           >
             <div className="py-24">
@@ -83,7 +83,7 @@ const MysticalTimePicker = ({ value, onChange }: MysticalTimePickerProps) => {
                     setSelectedMinute(minute);
                     scrollToCenter(minuteRef, minute);
                   }}
-                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-300 ${
+                  className={`h-14 flex items-center justify-center cursor-pointer transition-all duration-300 relative z-30 ${
                     selectedMinute === minute
                       ? 'text-gold text-2xl font-bold scale-110 glow-gold'
                       : 'text-muted-foreground text-base hover:text-foreground'
@@ -98,7 +98,7 @@ const MysticalTimePicker = ({ value, onChange }: MysticalTimePickerProps) => {
       </div>
 
       {/* Center highlight line */}
-      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-14 border-y-2 border-primary/30 pointer-events-none" />
+      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-14 border-y-2 border-primary/30 pointer-events-none z-5" />
       
       <style>{`
         .scrollbar-hide::-webkit-scrollbar {
