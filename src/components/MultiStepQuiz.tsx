@@ -3,8 +3,6 @@ import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import QuizStep from "./QuizStep";
 import LoadingWheel from "./LoadingWheel";
-import MysticalDatePicker from "./MysticalDatePicker";
-import MysticalTimePicker from "./MysticalTimePicker";
 import astrologerImage from "@/assets/astrologer.jpg";
 
 interface MultiStepQuizProps {
@@ -81,11 +79,14 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
               </p>
             </div>
 
-            {/* Date picker - takes remaining space */}
-            <div className="flex-1 flex flex-col min-h-0">
-              <MysticalDatePicker
+            {/* Date picker */}
+            <div className="space-y-4">
+              <input
+                type="date"
                 value={formData.date}
-                onChange={(date) => setFormData({ ...formData, date })}
+                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                className="w-full h-16 px-4 text-lg bg-card backdrop-blur-md border-2 border-primary/40 rounded-2xl text-gold font-semibold focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/30 transition-all duration-300 glow-mystical [color-scheme:dark]"
+                required
               />
             </div>
             
@@ -149,12 +150,15 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
         totalSteps={14}
       >
         <div className="space-y-6">
-          <MysticalTimePicker
+          <input
+            type="time"
             value={formData.time}
-            onChange={(time) => setFormData({ ...formData, time })}
+            onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+            className="w-full h-16 px-4 text-lg bg-card backdrop-blur-md border-2 border-primary/40 rounded-2xl text-gold font-semibold focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/30 transition-all duration-300 glow-mystical [color-scheme:dark]"
+            required
           />
           
-          <Button 
+          <Button
             onClick={handleNext}
             disabled={!formData.time}
             className="w-full h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0 relative overflow-hidden group"
