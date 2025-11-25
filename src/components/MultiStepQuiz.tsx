@@ -69,6 +69,16 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
               <div className="absolute -bottom-1 -left-1 text-lg animate-float" style={{animationDelay: "0.5s"}}>✨</div>
             </div>
 
+            {/* Astrologer info */}
+            <div className="text-center space-y-1 flex-shrink-0">
+              <h1 className="text-lg sm:text-xl font-bold text-gradient-gold glow-gold leading-tight">
+                Астролог с 20-летним опытом
+              </h1>
+              <p className="text-xs sm:text-sm text-gradient-mystical font-semibold">
+                Провела более 20 000 консультаций
+              </p>
+            </div>
+
             {/* Title */}
             <div className="text-center space-y-2 flex-shrink-0">
               <h2 className="text-2xl sm:text-3xl font-bold text-gradient-gold glow-gold">
