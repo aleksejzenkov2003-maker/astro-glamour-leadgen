@@ -34,7 +34,7 @@ const SuccessModal = ({ open, onClose, orderNumber }: SuccessModalProps) => {
 
           <div className="space-y-4 w-full">
             <p className="text-base text-foreground">
-              Мы свяжемся с вами в ближайшее время
+              Напишите нам в
             </p>
             
             {/* Social links */}
