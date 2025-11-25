@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface LoadingWheelProps {
   onComplete: () => void;
@@ -7,13 +7,17 @@ interface LoadingWheelProps {
 const LoadingWheel = ({ onComplete }: LoadingWheelProps) => {
   const [progress, setProgress] = useState(0);
   const [text, setText] = useState("Составляем вашу натальную карту...");
+  const hasCompletedRef = useRef(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(onComplete, 500);
+          if (!hasCompletedRef.current) {
+            hasCompletedRef.current = true;
+            setTimeout(onComplete, 500);
+          }
           return 100;
         }
         return prev + 2;
@@ -50,13 +54,6 @@ const LoadingWheel = ({ onComplete }: LoadingWheelProps) => {
           className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
-      </div>
-
-      {/* Step indicator */}
-      <div className="fixed top-4 right-4">
-        <span className="text-sm text-muted-foreground font-medium">
-          5/14
-        </span>
       </div>
 
       <div className="space-y-8 text-center animate-fade-in">
