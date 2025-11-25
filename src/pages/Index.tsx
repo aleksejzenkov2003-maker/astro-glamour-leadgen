@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CosmicBackground from "@/components/CosmicBackground";
-import MobileHero from "@/components/MobileHero";
+import MultiStepQuiz from "@/components/MultiStepQuiz";
 import SuccessModal from "@/components/SuccessModal";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
@@ -28,8 +28,8 @@ const Index = () => {
     <div className="relative min-h-screen flex flex-col">
       <CosmicBackground />
       
-      <div className="flex-1">
-        <MobileHero onSubmit={handleFormSubmit} />
+      <div className="flex-1 relative z-10">
+        <MultiStepQuiz onSubmit={handleFormSubmit} />
       </div>
 
       <Footer />
