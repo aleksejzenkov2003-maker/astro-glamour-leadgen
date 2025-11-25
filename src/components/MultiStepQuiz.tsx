@@ -12,7 +12,7 @@ interface MultiStepQuizProps {
 }
 
 const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     date: "",
@@ -34,66 +34,6 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
 
   if (isLoading) {
     return <LoadingWheel onComplete={handleLoadingComplete} />;
-  }
-
-  // Welcome screen
-  if (currentStep === 0) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        {/* Astrologer section */}
-        <div className="flex-1 flex flex-col items-center justify-center px-4 py-8">
-          <div className="w-full max-w-md space-y-6 animate-fade-in">
-            {/* Photo */}
-            <div className="relative group mx-auto max-w-[220px]">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary via-accent to-secondary rounded-full opacity-40 group-hover:opacity-60 blur-2xl transition-opacity duration-500 animate-pulse-mystical" />
-              
-              <div className="relative rounded-full overflow-hidden border-4 border-accent/50 shadow-[0_0_60px_rgba(255,216,138,0.6)] aspect-square glow-mystical">
-                <img src={astrologerImage} alt="Астролог" className="w-full h-full object-cover" />
-              </div>
-
-              {/* Floating elements */}
-              <div className="absolute -top-2 -right-2 text-2xl animate-float">⭐</div>
-              <div className="absolute -bottom-2 -left-2 text-xl animate-float" style={{animationDelay: "0.5s"}}>✨</div>
-              <div className="absolute top-1/4 -left-3 text-lg animate-float" style={{animationDelay: "1s"}}>🌙</div>
-              <div className="absolute bottom-1/4 -right-3 text-xl animate-float" style={{animationDelay: "1.5s"}}>🔮</div>
-            </div>
-
-            {/* Title */}
-            <div className="text-center space-y-2">
-              <h1 className="text-2xl sm:text-3xl font-bold text-gradient-gold glow-gold leading-tight">
-                Астролог с 20-летним опытом
-              </h1>
-              <p className="text-sm sm:text-base text-gradient-mystical font-semibold">
-                Провела более 20 000 консультаций
-              </p>
-            </div>
-
-            {/* Offer */}
-            <div className="relative bg-card/40 backdrop-blur-md border-2 border-accent/30 rounded-2xl p-5 glow-mystical overflow-hidden">
-              <div className="absolute top-2 left-4 text-accent animate-pulse" style={{animationDelay: "0s"}}>✨</div>
-              <div className="absolute top-3 right-6 text-gold animate-pulse" style={{animationDelay: "0.5s"}}>⭐</div>
-              <div className="absolute bottom-2 left-8 text-accent animate-pulse" style={{animationDelay: "1s"}}>✨</div>
-              
-              <p className="text-lg font-bold text-gradient-gold leading-tight text-center relative z-10 glow-gold">
-                ⭐ Получите бесплатный астрологический анализ судьбы
-              </p>
-              <p className="text-sm text-muted-foreground italic text-center mt-2 relative z-10">
-                по вашей натальной карте
-              </p>
-            </div>
-
-            {/* Start button */}
-            <Button 
-              onClick={handleNext}
-              className="relative w-full h-14 text-base font-bold bg-gradient-gold hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] overflow-hidden group border-0"
-            >
-              <span className="relative z-10">Начать ✨</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
   }
 
   // Step 1: Date
