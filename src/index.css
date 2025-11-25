@@ -168,6 +168,15 @@ All colors MUST be HSL.
   .animate-pulse-mystical {
     animation: pulse-mystical 3s ease-in-out infinite;
   }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @layer base {

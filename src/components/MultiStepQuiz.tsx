@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import QuizStep from "./QuizStep";
 import LoadingWheel from "./LoadingWheel";
 import MysticDatePicker from "./MysticDatePicker";
+import MysticTimePicker from "./MysticTimePicker";
 import astrologerImage from "@/assets/astrologer.jpg";
 
 interface MultiStepQuizProps {
@@ -158,12 +159,9 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
         totalSteps={14}
       >
         <div className="space-y-6">
-          <input
-            type="time"
+          <MysticTimePicker
             value={formData.time}
-            onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-            className="w-full h-16 px-4 text-lg bg-card backdrop-blur-md border-2 border-primary/40 rounded-2xl text-gold font-semibold focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/30 transition-all duration-300 glow-mystical [color-scheme:dark]"
-            required
+            onChange={(time) => setFormData({ ...formData, time })}
           />
           
           <Button
