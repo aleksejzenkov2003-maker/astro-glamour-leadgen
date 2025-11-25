@@ -13,18 +13,18 @@ const SuccessModal = ({ open, onClose, orderNumber }: SuccessModalProps) => {
       <DialogContent className="sm:max-w-md bg-card/95 backdrop-blur-xl border-2 border-primary/30">
         <div className="flex flex-col items-center justify-center space-y-6 p-6 text-center">
           <div className="relative">
-            <div className="absolute -inset-3 bg-gradient-to-r from-primary via-secondary to-accent rounded-full blur-2xl opacity-60 animate-pulse-mystical" />
-            <div className="relative bg-gradient-to-r from-primary to-secondary rounded-full p-4 shadow-[0_0_40px_rgba(96,215,203,0.8)] glow-mystical">
-              <CheckCircle2 className="w-16 h-16 text-white" />
+            <div className="absolute -inset-3 bg-gradient-gold rounded-full blur-2xl opacity-60 animate-pulse-mystical" />
+            <div className="relative bg-gradient-gold rounded-full p-4 shadow-[0_0_50px_rgba(255,216,138,0.9)] glow-mystical">
+              <CheckCircle2 className="w-16 h-16 text-background" />
             </div>
           </div>
           
           <div className="space-y-2">
-            <h2 className="text-2xl font-bold text-gradient-teal glow-teal">
+            <h2 className="text-2xl font-bold text-gradient-gold glow-gold">
               Заявка успешно отправлена!
             </h2>
             <p className="text-sm text-muted-foreground">
-              Ваш номер заявки: <span className="font-mono font-bold text-primary">{orderNumber}</span>
+              Ваш номер заявки: <span className="font-mono font-bold text-gold">{orderNumber}</span>
             </p>
           </div>
 
