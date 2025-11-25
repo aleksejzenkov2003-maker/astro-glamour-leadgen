@@ -8,49 +8,49 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 230 35% 15%;
-    --foreground: 0 0% 100%;
+    --background: 200 35% 10%;
+    --foreground: 180 20% 85%;
 
-    --card: 230 30% 18%;
-    --card-foreground: 0 0% 100%;
+    --card: 200 30% 12%;
+    --card-foreground: 180 20% 90%;
 
-    --popover: 230 30% 18%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 200 35% 12%;
+    --popover-foreground: 180 20% 90%;
 
-    --primary: 265 80% 65%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 175 70% 50%;
+    --primary-foreground: 200 35% 10%;
 
-    --secondary: 195 100% 60%;
-    --secondary-foreground: 230 35% 15%;
+    --secondary: 195 100% 55%;
+    --secondary-foreground: 200 35% 10%;
 
-    --muted: 230 25% 25%;
-    --muted-foreground: 220 15% 70%;
+    --muted: 200 25% 20%;
+    --muted-foreground: 180 15% 60%;
 
-    --accent: 45 100% 70%;
-    --accent-foreground: 230 35% 15%;
+    --accent: 180 80% 60%;
+    --accent-foreground: 200 35% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 230 25% 30%;
-    --input: 230 25% 25%;
-    --ring: 265 80% 65%;
+    --border: 200 25% 25%;
+    --input: 200 30% 15%;
+    --ring: 175 70% 50%;
 
     --radius: 0.75rem;
     
-    --cosmic-blue: 230 50% 40%;
-    --cosmic-cyan: 195 100% 50%;
-    --cosmic-purple: 265 70% 55%;
-    --gold: 45 100% 70%;
-    --gold-shimmer: 45 100% 85%;
-    --pink-glow: 320 75% 70%;
+    --mystical-teal: 175 70% 50%;
+    --mystical-cyan: 185 80% 55%;
+    --mystical-dark: 200 40% 8%;
+    --mystical-glow: 175 90% 60%;
+    --gold: 45 90% 60%;
+    --gold-shimmer: 50 100% 70%;
     
-    --gradient-cosmic: linear-gradient(135deg, hsl(230 50% 40%), hsl(265 70% 55%), hsl(195 100% 50%));
-    --gradient-gold: linear-gradient(135deg, hsl(45 100% 70%), hsl(45 100% 85%), hsl(35 100% 65%));
-    --gradient-mystical: linear-gradient(180deg, hsl(265 70% 55% / 0.3), hsl(195 100% 50% / 0.2));
+    --gradient-cosmic: linear-gradient(135deg, hsl(200 40% 8%), hsl(175 70% 50% / 0.3), hsl(185 80% 55% / 0.2));
+    --gradient-mystical-wheel: conic-gradient(from 0deg, hsl(175 70% 50% / 0.8), hsl(185 80% 55% / 0.6), hsl(175 70% 50% / 0.8));
+    --gradient-button: linear-gradient(135deg, hsl(175 70% 50%), hsl(185 80% 55%));
     
-    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.5);
-    --shadow-gold: 0 0 20px hsl(var(--gold) / 0.6);
+    --shadow-glow: 0 0 40px hsl(var(--mystical-glow) / 0.6);
+    --shadow-teal: 0 0 30px hsl(var(--mystical-teal) / 0.5);
     
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -80,20 +80,24 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  .text-gradient-gold {
-    @apply bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--gold-shimmer))] to-[hsl(var(--gold))] bg-clip-text text-transparent;
+  .text-gradient-teal {
+    @apply bg-gradient-to-r from-[hsl(var(--mystical-teal))] via-[hsl(var(--mystical-glow))] to-[hsl(var(--mystical-cyan))] bg-clip-text text-transparent;
   }
   
   .text-gradient-mystical {
-    @apply bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--pink-glow))] to-[hsl(var(--secondary))] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[hsl(var(--mystical-cyan))] via-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent;
   }
   
-  .glow-gold {
-    text-shadow: 0 0 20px hsl(var(--gold) / 0.8), 0 0 40px hsl(var(--gold) / 0.5);
+  .glow-teal {
+    text-shadow: 0 0 20px hsl(var(--mystical-teal) / 0.8), 0 0 40px hsl(var(--mystical-glow) / 0.6);
   }
   
   .glow-mystical {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.6), 0 0 60px hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 40px hsl(var(--mystical-teal) / 0.5), 0 0 80px hsl(var(--mystical-glow) / 0.3);
+  }
+  
+  .glow-wheel {
+    box-shadow: 0 0 60px hsl(var(--mystical-glow) / 0.8), 0 0 120px hsl(var(--mystical-teal) / 0.5), inset 0 0 40px hsl(var(--mystical-glow) / 0.3);
   }
   
   .animate-float {
@@ -139,6 +143,30 @@ All colors MUST be HSL.
       transform: translateX(200vw) translateY(200vh) rotate(45deg);
       opacity: 0;
     }
+  }
+  
+  @keyframes rotate-wheel {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes pulse-mystical {
+    0%, 100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+  
+  .animate-wheel {
+    animation: rotate-wheel 20s linear infinite;
+  }
+  
+  .animate-pulse-mystical {
+    animation: pulse-mystical 3s ease-in-out infinite;
   }
 }
 

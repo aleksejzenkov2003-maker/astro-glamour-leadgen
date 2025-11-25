@@ -61,6 +61,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        mystical: {
+          teal: "hsl(var(--mystical-teal))",
+          cyan: "hsl(var(--mystical-cyan))",
+          dark: "hsl(var(--mystical-dark))",
+          glow: "hsl(var(--mystical-glow))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -102,9 +108,9 @@ export default {
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
       backgroundImage: {
-        "gradient-cosmic": "linear-gradient(135deg, hsl(230 50% 40%), hsl(265 70% 55%), hsl(195 100% 50%))",
-        "gradient-gold": "linear-gradient(135deg, hsl(45 100% 70%), hsl(45 100% 85%), hsl(35 100% 65%))",
-        "gradient-mystical": "linear-gradient(180deg, hsl(265 70% 55% / 0.3), hsl(195 100% 50% / 0.2))",
+        "gradient-cosmic": "linear-gradient(135deg, hsl(200 40% 8%), hsl(175 70% 50% / 0.3), hsl(185 80% 55% / 0.2))",
+        "gradient-button": "linear-gradient(135deg, hsl(175 70% 50%), hsl(185 80% 55%))",
+        "gradient-mystical": "linear-gradient(180deg, hsl(200 40% 8% / 0.8), hsl(200 35% 10% / 0.6))",
       },
     },
   },

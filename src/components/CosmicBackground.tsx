@@ -1,16 +1,22 @@
 const CosmicBackground = () => {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-[hsl(var(--mystical-dark))]">
       {/* Main cosmic gradient */}
-      <div className="absolute inset-0 bg-gradient-cosmic" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(200_40%_8%)] via-[hsl(200_35%_10%)] to-[hsl(200_30%_12%)]" />
       
-      {/* Animated shooting stars */}
+      {/* Glowing orbs in background */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-mystical" />
+      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-[120px] animate-pulse-mystical" style={{animationDelay: "1.5s"}} />
+      
+      {/* Animated stars */}
       <div className="absolute inset-0">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(50)].map((_, i) => (
           <div
             key={`star-${i}`}
-            className="absolute w-1 h-1 bg-white rounded-full animate-pulse-glow"
+            className="absolute rounded-full bg-primary/60 animate-pulse-glow"
             style={{
+              width: `${1 + Math.random() * 2}px`,
+              height: `${1 + Math.random() * 2}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 3}s`,
@@ -20,42 +26,26 @@ const CosmicBackground = () => {
         ))}
       </div>
       
-      {/* Comets */}
+      {/* Mystical particles */}
       <div className="absolute inset-0">
-        {[...Array(3)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <div
-            key={`comet-${i}`}
-            className="absolute"
+            key={`particle-${i}`}
+            className="absolute text-primary/30 animate-float"
             style={{
-              animation: `comet ${8 + i * 3}s linear infinite`,
-              animationDelay: `${i * 4}s`,
-              top: `${Math.random() * 30}%`,
-              left: `-10%`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+              fontSize: `${8 + Math.random() * 6}px`,
             }}
           >
-            <div className="relative">
-              {/* Comet head */}
-              <div className="w-2 h-2 bg-white rounded-full shadow-[0_0_10px_#fff,0_0_20px_#4db7ff]" />
-              {/* Comet tail */}
-              <div 
-                className="absolute top-1/2 left-0 -translate-y-1/2 h-[2px] bg-gradient-to-r from-white/80 via-secondary/50 to-transparent"
-                style={{ width: '80px', transform: 'translateY(-50%) translateX(-80px)' }}
-              />
-            </div>
+            ✨
           </div>
         ))}
       </div>
       
-      {/* Mystical overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-mystical" />
-      
-      {/* Subtle noise texture */}
-      <div 
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E")`,
-        }}
-      />
+      {/* Subtle overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
     </div>
   );
 };
