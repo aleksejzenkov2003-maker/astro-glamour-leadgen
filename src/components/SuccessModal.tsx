@@ -1,4 +1,4 @@
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { CheckCircle2 } from "lucide-react";
 
 interface SuccessModalProps {
@@ -11,6 +11,10 @@ const SuccessModal = ({ open, onClose, orderNumber }: SuccessModalProps) => {
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md bg-card/95 backdrop-blur-xl border-2 border-primary/30">
+        <DialogTitle className="sr-only">Заявка успешно отправлена</DialogTitle>
+        <DialogDescription className="sr-only">
+          Ваша заявка на астрологический анализ успешно отправлена. Мы свяжемся с вами в ближайшее время.
+        </DialogDescription>
         <div className="flex flex-col items-center justify-center space-y-6 p-6 text-center">
           <div className="relative">
             <div className="absolute -inset-3 bg-gradient-gold rounded-full blur-2xl opacity-60 animate-pulse-mystical" />
