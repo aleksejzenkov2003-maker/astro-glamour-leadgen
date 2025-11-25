@@ -3,7 +3,7 @@ import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import QuizStep from "./QuizStep";
 import LoadingWheel from "./LoadingWheel";
-import MysticDatePicker from "./MysticDatePicker";
+import MysticDateScrollPicker from "./MysticDateScrollPicker";
 import MysticTimePicker from "./MysticTimePicker";
 import astrologerImage from "@/assets/astrologer.jpg";
 
@@ -93,7 +93,7 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
 
             {/* Date picker */}
             <div className="space-y-4">
-              <MysticDatePicker
+              <MysticDateScrollPicker
                 value={formData.date}
                 onChange={(date) => setFormData({ ...formData, date })}
               />
