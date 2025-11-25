@@ -46,13 +46,6 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
           />
         </div>
 
-        {/* Step indicator */}
-        <div className="text-right px-4 py-3">
-          <span className="text-sm text-muted-foreground font-medium">
-            2/14
-          </span>
-        </div>
-
         {/* Content */}
         <div className="flex-1 flex flex-col px-4 pb-8 overflow-hidden">
           <div className="w-full max-w-md mx-auto space-y-6 animate-fade-in flex flex-col h-full">
