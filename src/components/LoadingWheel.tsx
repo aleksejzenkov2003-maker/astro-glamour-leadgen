@@ -22,22 +22,25 @@ const LoadingWheel = ({ onComplete }: LoadingWheelProps) => {
 
     // Change text at different progress points
     const textInterval = setInterval(() => {
-      if (progress < 30) {
-        setText("Составляем вашу натальную карту...");
-      } else if (progress < 60) {
-        setText("Анализируем планетарные аспекты...");
-      } else if (progress < 90) {
-        setText("Изучаем ваши кармические узлы...");
-      } else {
-        setText("Готовим ваш личный прогноз...");
-      }
+      setProgress((currentProgress) => {
+        if (currentProgress < 30) {
+          setText("Составляем вашу натальную карту...");
+        } else if (currentProgress < 60) {
+          setText("Анализируем планетарные аспекты...");
+        } else if (currentProgress < 90) {
+          setText("Изучаем ваши кармические узлы...");
+        } else {
+          setText("Готовим ваш личный прогноз...");
+        }
+        return currentProgress;
+      });
     }, 2000);
 
     return () => {
       clearInterval(interval);
       clearInterval(textInterval);
     };
-  }, [progress, onComplete]);
+  }, [onComplete]);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[hsl(var(--mystical-dark))] to-[hsl(var(--background))] px-4">
@@ -68,7 +71,7 @@ const LoadingWheel = ({ onComplete }: LoadingWheelProps) => {
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 blur-3xl animate-pulse-mystical" />
           
           {/* Main wheel */}
-          <div className="relative w-full h-full rounded-full bg-[hsl(var(--mystical-dark))] border-4 border-primary/30 glow-wheel overflow-hidden">
+          <div className="relative w-full h-full rounded-full bg-card border-4 border-primary/30 glow-wheel overflow-hidden">
             {/* Rotating zodiac ring */}
             <div className="absolute inset-4 rounded-full border-2 border-primary/40 animate-wheel">
               {/* Zodiac symbols */}
