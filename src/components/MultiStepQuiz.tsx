@@ -57,16 +57,23 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
                 <img src={astrologerImage} alt="Астролог" className="w-full h-full object-cover" />
               </div>
 
-              {/* Floating elements */}
-              <div className="absolute -top-1 -right-1 text-xl animate-float">⭐</div>
-              <div className="absolute -bottom-1 -left-1 text-lg animate-float" style={{animationDelay: "0.5s"}}>✨</div>
-            </div>
+            {/* Floating elements */}
+            <div className="absolute -top-1 -right-1 text-xl animate-float">⭐</div>
+            <div className="absolute -bottom-1 -left-1 text-lg animate-float" style={{animationDelay: "0.5s"}}>✨</div>
+          </div>
 
-            {/* Astrologer info */}
-            <div className="text-center space-y-1 flex-shrink-0">
-              <h1 className="text-lg sm:text-xl font-bold text-gradient-gold glow-gold leading-tight">
-                Астролог с 20-летним опытом
-              </h1>
+          {/* Name */}
+          <div className="text-center -mt-2 flex-shrink-0">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gradient-gold glow-gold">
+              Адель
+            </h2>
+          </div>
+
+          {/* Astrologer info */}
+          <div className="text-center space-y-1 flex-shrink-0">
+            <h1 className="text-base sm:text-lg font-semibold text-gradient-mystical leading-tight">
+              Астролог с 20-летним опытом
+            </h1>
               <p className="text-xs sm:text-sm text-gradient-mystical font-semibold">
                 Провела более 20 000 консультаций
               </p>
