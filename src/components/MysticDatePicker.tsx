@@ -124,9 +124,9 @@ const MysticDatePicker = ({ value, onChange }: MysticDatePickerProps) => {
             onClick={() => setIsOpen(false)}
           />
           
-          {/* Calendar */}
-          <div className="absolute top-full left-0 right-0 mt-2 z-50 animate-scale-in">
-            <div className="relative bg-card/95 backdrop-blur-xl border-2 border-primary/40 rounded-2xl p-4 shadow-[0_0_60px_rgba(255,216,138,0.3)] glow-mystical">
+          {/* Calendar - centered modal */}
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in">
+            <div className="relative bg-card/95 backdrop-blur-xl border-2 border-primary/40 rounded-2xl p-4 shadow-[0_0_60px_rgba(255,216,138,0.3)] glow-mystical w-full max-w-sm animate-scale-in">
               {/* Mystical glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/20 to-secondary/20 rounded-2xl blur-xl opacity-50 animate-pulse-mystical" />
               
