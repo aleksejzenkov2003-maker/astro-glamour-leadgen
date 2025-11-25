@@ -21,13 +21,6 @@ const QuizStep = ({ children, title, subtitle, step, totalSteps }: QuizStepProps
         />
       </div>
 
-      {/* Step indicator */}
-      <div className="text-right px-4 py-3">
-        <span className="text-sm text-muted-foreground font-medium">
-          {step}/{totalSteps}
-        </span>
-      </div>
-
       {/* Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 pb-8">
         <div className="w-full max-w-md space-y-8 animate-fade-in">

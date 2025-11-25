@@ -28,6 +28,12 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
     }
   };
 
+  const handleBack = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
   const handleLoadingComplete = () => {
     onSubmit(formData);
   };
@@ -137,13 +143,22 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
             />
           </div>
           
-          <Button 
-            onClick={handleNext}
-            disabled={!formData.city}
-            className="w-full h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0"
-          >
-            Продолжить ✨
-          </Button>
+          <div className="flex gap-3">
+            <Button 
+              onClick={handleBack}
+              variant="outline"
+              className="h-14 px-6 text-base font-semibold border-2 border-primary/40 text-gold hover:bg-primary/20 hover:border-gold transition-all duration-300"
+            >
+              ← Назад
+            </Button>
+            <Button 
+              onClick={handleNext}
+              disabled={!formData.city}
+              className="flex-1 h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0"
+            >
+              Продолжить ✨
+            </Button>
+          </div>
         </div>
       </QuizStep>
     );
@@ -164,14 +179,23 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
             onChange={(time) => setFormData({ ...formData, time })}
           />
           
-          <Button
-            onClick={handleNext}
-            disabled={!formData.time}
-            className="w-full h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0 relative overflow-hidden group"
-          >
-            <span className="relative z-10">Получить анализ ✨</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-          </Button>
+          <div className="flex gap-3">
+            <Button 
+              onClick={handleBack}
+              variant="outline"
+              className="h-14 px-6 text-base font-semibold border-2 border-primary/40 text-gold hover:bg-primary/20 hover:border-gold transition-all duration-300"
+            >
+              ← Назад
+            </Button>
+            <Button
+              onClick={handleNext}
+              disabled={!formData.time}
+              className="flex-1 h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0 relative overflow-hidden group"
+            >
+              <span className="relative z-10">Получить анализ ✨</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            </Button>
+          </div>
         </div>
       </QuizStep>
     );
