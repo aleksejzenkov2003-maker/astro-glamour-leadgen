@@ -49,31 +49,31 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
         {/* Content */}
         <div className="flex-1 flex flex-col px-4 pb-8 overflow-hidden">
           <div className="w-full max-w-md mx-auto space-y-6 animate-fade-in flex flex-col h-full">
+            {/* Name */}
+            <div className="text-center flex-shrink-0 mt-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gradient-gold glow-gold">
+                Адель
+              </h2>
+            </div>
+
             {/* Photo */}
-            <div className="relative group mx-auto max-w-[180px] flex-shrink-0 mt-4">
+            <div className="relative group mx-auto max-w-[180px] flex-shrink-0">
               <div className="absolute -inset-3 bg-gradient-to-r from-primary via-accent to-secondary rounded-full opacity-40 group-hover:opacity-60 blur-2xl transition-opacity duration-500 animate-pulse-mystical" />
               
               <div className="relative rounded-full overflow-hidden border-4 border-accent/50 shadow-[0_0_60px_rgba(255,216,138,0.6)] aspect-square glow-mystical">
                 <img src={astrologerImage} alt="Астролог" className="w-full h-full object-cover" />
               </div>
 
-            {/* Floating elements */}
-            <div className="absolute -top-1 -right-1 text-xl animate-float">⭐</div>
-            <div className="absolute -bottom-1 -left-1 text-lg animate-float" style={{animationDelay: "0.5s"}}>✨</div>
-          </div>
+              {/* Floating elements */}
+              <div className="absolute -top-1 -right-1 text-xl animate-float">⭐</div>
+              <div className="absolute -bottom-1 -left-1 text-lg animate-float" style={{animationDelay: "0.5s"}}>✨</div>
+            </div>
 
-          {/* Name */}
-          <div className="text-center -mt-2 flex-shrink-0">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gradient-gold glow-gold">
-              Адель
-            </h2>
-          </div>
-
-          {/* Astrologer info */}
-          <div className="text-center space-y-1 flex-shrink-0">
-            <h1 className="text-base sm:text-lg font-semibold text-gradient-mystical leading-tight">
-              Астролог с 20-летним опытом
-            </h1>
+            {/* Astrologer info */}
+            <div className="text-center space-y-1 flex-shrink-0">
+              <h1 className="text-base sm:text-lg font-semibold text-gradient-mystical leading-tight">
+                Астролог с 20-летним опытом
+              </h1>
               <p className="text-xs sm:text-sm text-gradient-mystical font-semibold">
                 Провела более 20 000 консультаций
               </p>
