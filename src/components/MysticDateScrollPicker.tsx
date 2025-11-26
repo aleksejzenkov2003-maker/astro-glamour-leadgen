@@ -100,7 +100,7 @@ const MysticDateScrollPicker = ({ value, onChange }: MysticDateScrollPickerProps
         className="w-full h-16 px-4 text-lg bg-card backdrop-blur-md border-2 border-primary/40 rounded-2xl text-gold font-semibold focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/30 transition-all duration-300 glow-mystical flex items-center justify-between group hover:border-gold/60"
       >
         <span className={value ? "text-gold" : "text-muted-foreground"}>
-          {value ? formatDisplayDate(value) : "Выберите дату рождения"}
+          {value ? formatDisplayDate(value) : "Введите дату рождения"}
         </span>
         <Calendar className="h-5 w-5 text-gold group-hover:scale-110 transition-transform" />
       </button>
