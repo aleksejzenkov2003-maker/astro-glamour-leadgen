@@ -17,27 +17,24 @@ const SuccessModal = ({ open, onClose, orderNumber }: SuccessModalProps) => {
         </DialogDescription>
         <div className="flex flex-col items-center justify-center space-y-6 p-6 text-center">
           <div className="relative">
-            <div className="absolute -inset-3 bg-green-500/30 rounded-full blur-2xl opacity-60 animate-pulse-mystical" />
-            <div className="relative bg-green-500 rounded-full p-4 shadow-[0_0_50px_rgba(34,197,94,0.9)] glow-mystical">
-              <CheckCircle2 className="w-16 h-16 text-white" />
+            <div className="absolute -inset-3 bg-gradient-gold rounded-full blur-2xl opacity-60 animate-pulse-mystical" />
+            <div className="relative bg-gradient-gold rounded-full p-4 shadow-[0_0_50px_rgba(255,216,138,0.9)] glow-mystical">
+              <CheckCircle2 className="w-16 h-16 text-background" />
             </div>
           </div>
           
           <div className="space-y-2">
             <h2 className="text-2xl font-bold text-gradient-gold glow-gold">
-              Анкета успешно заполнена!
+              Заявка успешно отправлена!
             </h2>
-            <p className="text-base text-foreground">
-              Ваша заявка передана эксперту.
-            </p>
             <p className="text-sm text-muted-foreground">
-              Персональный номер заявки: <span className="font-mono font-bold text-gold">{orderNumber}</span>
+              Ваш номер заявки: <span className="font-mono font-bold text-gold">{orderNumber}</span>
             </p>
           </div>
 
           <div className="space-y-4 w-full">
             <p className="text-base text-foreground">
-              Напишите его Аделине👇
+              Напишите нам в
             </p>
             
             {/* Social links */}
