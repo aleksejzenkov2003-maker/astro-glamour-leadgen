@@ -99,6 +99,9 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
               <p className="text-sm text-muted-foreground leading-relaxed px-4 text-center">
                 Введите дату рождения
               </p>
+              <p className="text-xs text-muted-foreground/80 leading-relaxed px-4 text-center">
+                Дата рождения важна для составления точной натальной карты
+              </p>
               <MysticDateScrollPicker
                 value={formData.date}
                 onChange={(date) => setFormData({ ...formData, date })}
