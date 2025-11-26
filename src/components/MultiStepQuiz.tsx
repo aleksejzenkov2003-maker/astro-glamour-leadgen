@@ -6,20 +6,23 @@ import LoadingWheel from "./LoadingWheel";
 import MysticDateScrollPicker from "./MysticDateScrollPicker";
 import MysticTimePicker from "./MysticTimePicker";
 import astrologerImage from "@/assets/astrologer.jpg";
-
 interface MultiStepQuizProps {
-  onSubmit: (data: { date: string; city: string; time: string }) => void;
+  onSubmit: (data: {
+    date: string;
+    city: string;
+    time: string;
+  }) => void;
 }
-
-const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
+const MultiStepQuiz = ({
+  onSubmit
+}: MultiStepQuizProps) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     date: "",
     city: "",
-    time: "",
+    time: ""
   });
-
   const handleNext = () => {
     if (currentStep < 3) {
       setCurrentStep(currentStep + 1);
@@ -27,31 +30,26 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
       setIsLoading(true);
     }
   };
-
   const handleBack = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
     }
   };
-
   const handleLoadingComplete = () => {
     onSubmit(formData);
   };
-
   if (isLoading) {
     return <LoadingWheel onComplete={handleLoadingComplete} />;
   }
 
   // Step 1: Date
   if (currentStep === 1) {
-    return (
-      <div className="min-h-screen flex flex-col">
+    return <div className="min-h-screen flex flex-col">
         {/* Progress bar */}
         <div className="w-full h-1 bg-muted/30">
-          <div 
-            className="h-full bg-gradient-gold transition-all duration-500 ease-out shadow-[0_0_15px_hsl(var(--gold))]"
-            style={{ width: `${(2/14) * 100}%` }}
-          />
+          <div className="h-full bg-gradient-gold transition-all duration-500 ease-out shadow-[0_0_15px_hsl(var(--gold))]" style={{
+          width: `${2 / 14 * 100}%`
+        }} />
         </div>
 
         {/* Content */}
@@ -74,7 +72,9 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
 
               {/* Floating elements */}
               <div className="absolute -top-1 -right-1 text-xl animate-float">⭐</div>
-              <div className="absolute -bottom-1 -left-1 text-lg animate-float" style={{animationDelay: "0.5s"}}>✨</div>
+              <div className="absolute -bottom-1 -left-1 text-lg animate-float" style={{
+              animationDelay: "0.5s"
+            }}>✨</div>
             </div>
 
             {/* Astrologer info */}
@@ -96,115 +96,72 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
 
             {/* Date picker */}
             <div className="space-y-4">
-              <p className="text-sm text-muted-foreground leading-relaxed px-4 text-center">
-                Введите дату рождения
-              </p>
+              
               <p className="text-xs text-muted-foreground/80 leading-relaxed px-4 text-center">
                 Дата рождения важна для составления точной натальной карты
               </p>
-              <MysticDateScrollPicker
-                value={formData.date}
-                onChange={(date) => setFormData({ ...formData, date })}
-              />
+              <MysticDateScrollPicker value={formData.date} onChange={date => setFormData({
+              ...formData,
+              date
+            })} />
             </div>
             
             {/* Button */}
             <div className="flex-shrink-0">
-              <Button 
-                onClick={handleNext}
-                disabled={!formData.date}
-                className="w-full h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0"
-              >
+              <Button onClick={handleNext} disabled={!formData.date} className="w-full h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0">
                 Получить анализ ✨
               </Button>
             </div>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 
   // Step 2: City
   if (currentStep === 2) {
-    return (
-      <QuizStep 
-        title="Где вы родились?"
-        subtitle="Место рождения определяет расположение домов в вашей карте"
-        step={3}
-        totalSteps={14}
-      >
+    return <QuizStep title="Где вы родились?" subtitle="Место рождения определяет расположение домов в вашей карте" step={3} totalSteps={14}>
         <div className="space-y-6">
           <div className="relative">
             <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gold z-10" />
-            <input
-              type="text"
-              value={formData.city}
-              onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-              className="w-full h-14 pl-12 pr-4 text-base bg-card/60 border-2 border-primary/40 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/30 transition-all duration-300 backdrop-blur-sm glow-mystical"
-              placeholder="Введите город"
-              required
-            />
+            <input type="text" value={formData.city} onChange={e => setFormData({
+            ...formData,
+            city: e.target.value
+          })} className="w-full h-14 pl-12 pr-4 text-base bg-card/60 border-2 border-primary/40 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/30 transition-all duration-300 backdrop-blur-sm glow-mystical" placeholder="Введите город" required />
           </div>
           
           <div className="flex gap-3">
-            <Button 
-              onClick={handleBack}
-              variant="outline"
-              className="h-14 px-6 text-base font-semibold border-2 border-primary/40 text-gold hover:bg-primary/20 hover:border-gold transition-all duration-300"
-            >
+            <Button onClick={handleBack} variant="outline" className="h-14 px-6 text-base font-semibold border-2 border-primary/40 text-gold hover:bg-primary/20 hover:border-gold transition-all duration-300">
               ← Назад
             </Button>
-            <Button 
-              onClick={handleNext}
-              disabled={!formData.city}
-              className="flex-1 h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0"
-            >
+            <Button onClick={handleNext} disabled={!formData.city} className="flex-1 h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0">
               Продолжить ✨
             </Button>
           </div>
         </div>
-      </QuizStep>
-    );
+      </QuizStep>;
   }
 
   // Step 3: Time
   if (currentStep === 3) {
-    return (
-      <QuizStep 
-        title="Во сколько вы родились?"
-        subtitle="Точное время рождения позволит определить ваш асцендент"
-        step={4}
-        totalSteps={14}
-      >
+    return <QuizStep title="Во сколько вы родились?" subtitle="Точное время рождения позволит определить ваш асцендент" step={4} totalSteps={14}>
         <div className="space-y-6">
-          <MysticTimePicker
-            value={formData.time}
-            onChange={(time) => setFormData({ ...formData, time })}
-          />
+          <MysticTimePicker value={formData.time} onChange={time => setFormData({
+          ...formData,
+          time
+        })} />
           
           <div className="flex gap-3">
-            <Button 
-              onClick={handleBack}
-              variant="outline"
-              className="h-14 px-6 text-base font-semibold border-2 border-primary/40 text-gold hover:bg-primary/20 hover:border-gold transition-all duration-300"
-            >
+            <Button onClick={handleBack} variant="outline" className="h-14 px-6 text-base font-semibold border-2 border-primary/40 text-gold hover:bg-primary/20 hover:border-gold transition-all duration-300">
               ← Назад
             </Button>
-            <Button
-              onClick={handleNext}
-              disabled={!formData.time}
-              className="flex-1 h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0 relative overflow-hidden group"
-            >
+            <Button onClick={handleNext} disabled={!formData.time} className="flex-1 h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0 relative overflow-hidden group">
               <span className="relative z-10">Получить анализ ✨</span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             </Button>
           </div>
         </div>
-      </QuizStep>
-    );
+      </QuizStep>;
   }
-
   return null;
 };
-
 export default MultiStepQuiz;
