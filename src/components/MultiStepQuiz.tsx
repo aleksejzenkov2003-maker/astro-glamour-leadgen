@@ -83,7 +83,7 @@ const MultiStepQuiz = ({
                 Астролог с 20-летним опытом
               </h1>
               <p className="text-xs sm:text-sm text-gradient-mystical font-semibold">
-                Провела более 20 000 консультаций
+                Провела более 1700 консультаций
               </p>
             </div>
 
