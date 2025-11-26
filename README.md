@@ -1,78 +1,120 @@
-Welcome to your Project
-Project info
+# Astro Glamour Leadgen
 
-URL: Project link
+Проект лендинга на **Vite + React + TypeScript + Tailwind**.
 
-How can I edit this code?
+Этот файл описывает, как:
 
-There are several ways to work with and modify the application.
+- запустить проект локально;
+- собрать production-версию;
+- выложить её на обычный хостинг (как статический сайт).
 
-Use the built-in online editor
+---
 
-Open the project using its URL and make changes directly through the interface.
-All updates made online will be automatically committed to the repository.
+## 1. Требования
 
-Work locally in your preferred IDE
+- **Node.js** версии **≥ 18**
+- **npm** (ставится вместе с Node.js)
+- Любой хостинг, который умеет отдавать **статические файлы** (FTP/панель управления и т.п.)
 
-Если вы хотите разрабатывать локально, просто клонируйте репозиторий и продолжайте работу как обычно.
-Все изменения, которые вы отправите (push), появятся в проекте.
+---
 
-Требования: установленный Node.js и npm. Удобнее всего установить их через nvm:
-https://github.com/nvm-sh/nvm#installing-and-updating
+## 2. Установка и локальный запуск
 
-Шаги для локального запуска:
+```bash
+# Клонируем репозиторий
+git clone https://github.com/aleksejzenkov2003-maker/astro-glamour-leadgen.git
 
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Переходим в папку проекта
+cd astro-glamour-leadgen
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+# Устанавливаем зависимости
+npm install
+# или
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Запускаем локальный dev-сервер
+npm run dev
+````
+
+После этого в терминале появится адрес вида:
+
+```text
+http://localhost:5173
+```
+
+Откройте его в браузере.
+
+---
+
+## 3. Сборка проекта (production)
+
+Для подготовки файлов, которые нужно заливать на хостинг:
+
+```bash
+npm run build
+```
+
+После выполнения команды появится папка **`dist`** — это готовый статический сайт.
+
+> Всё, что лежит внутри `dist`, и нужно заливать на хостинг.
+
+---
+
+## 4. Деплой на обычный хостинг (как статический сайт)
+
+1. Соберите проект локально:
+
+   ```bash
+   npm install
+   npm run build
+   ```
+
+2. Откройте по FTP или через файловый менеджер хостинга корневую папку вашего сайта
+   (часто называется `public_html`, `www`, `htdocs` и т.п.).
+
+3. Удалите из неё лишние файлы-заглушки хостинга (если есть).
+
+4. Скопируйте **все файлы и папки из `dist`** (именно содержимое, а не саму папку `dist`) в корневую папку сайта.
+
+После загрузки сайт будет доступен по вашему домену.
+
+---
+
+## 5. Настройка роутинга (если используется SPA-роутер)
+
+Если в проекте используется клиентский роутер (React Router и т.п.), то при обновлении страницы может появляться ошибка 404 от сервера. Чтобы этого избежать, для **Apache** можно создать в корне сайта файл `.htaccess`:
+
+```htaccess
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^ index.html [L]
+```
+
+Это правило говорит серверу всегда отдавать `index.html`, а дальше роутинг берёт на себя фронтенд.
+
+---
+
+## 6. Полезные команды
+
+```bash
+# Установка зависимостей
+npm install
+
+# Локальная разработка
 npm run dev
 
-Edit directly in GitHub
+# Production-сборка
+npm run build
 
-Откройте нужный файл в репозитории.
+# Просмотр production-сборки локально
+npm run preview
+```
 
-Нажмите кнопку «Edit» (значок карандаша).
-
-Внесите изменения и закоммитьте их.
-
-Use GitHub Codespaces
-
-Перейдите на главную страницу репозитория.
-
-Нажмите кнопку Code.
-
-Откройте вкладку Codespaces.
-
-Создайте новый Codespace.
-
-Работайте в полноценной облачной среде разработки и отправляйте изменения по мере готовности.
-
-What technologies are used?
-
-Проект основан на следующих технологиях:
-
-Vite
-
-TypeScript
-
-React
-
-shadcn-ui
-
-Tailwind CSS
-
-How can I deploy this project?
-
-Воспользуйтесь встроенными инструментами публикации или разверните проект на любой платформе, поддерживающей статические приложения (например, Vercel, Netlify или GitHub Pages).
-
-Can I connect a custom domain?
-
-Да.
-После публикации проекта вы можете подключить собственный домен через настройки выбранной хостинг-платформы.
+```
+::contentReference[oaicite:0]{index=0}
+```
