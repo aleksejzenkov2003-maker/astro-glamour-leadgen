@@ -59,8 +59,8 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
           <div className="w-full max-w-md mx-auto space-y-6 animate-fade-in flex flex-col h-full">
             {/* Name */}
             <div className="text-center flex-shrink-0 mt-4">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gradient-gold glow-gold">
-                Адель
+              <h2 className="text-xl sm:text-2xl font-bold text-gradient-gold glow-gold">
+                Дипломированный астролог Аделина
               </h2>
             </div>
 
@@ -90,11 +90,8 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
             {/* Title */}
             <div className="text-center space-y-2 flex-shrink-0">
               <h2 className="text-2xl sm:text-3xl font-bold text-gradient-gold glow-gold">
-                Когда вы родились?
+                Получите бесплатный астрологический разбор
               </h2>
-              <p className="text-sm text-muted-foreground leading-relaxed px-4">
-                Дата рождения важна для составления точной натальной карты
-              </p>
             </div>
 
             {/* Date picker */}
@@ -103,6 +100,9 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
                 value={formData.date}
                 onChange={(date) => setFormData({ ...formData, date })}
               />
+              <p className="text-sm text-muted-foreground leading-relaxed px-4 text-center">
+                Дата рождения важна для составления точной натальной карты
+              </p>
             </div>
             
             {/* Button */}
@@ -112,7 +112,7 @@ const MultiStepQuiz = ({ onSubmit }: MultiStepQuizProps) => {
                 disabled={!formData.date}
                 className="w-full h-14 text-base font-semibold bg-gradient-gold hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(255,216,138,0.6)] hover:shadow-[0_0_50px_rgba(255,216,138,0.9)] border-0"
               >
-                Продолжить ✨
+                Получить анализ ✨
               </Button>
             </div>
           </div>
