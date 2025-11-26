@@ -96,16 +96,13 @@ const MultiStepQuiz = ({
 
             {/* Date picker */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gradient-gold text-center">
-                Введите дату рождения
-              </h3>
-              <p className="text-xs text-muted-foreground/80 leading-relaxed px-4 text-center">
-                Дата рождения важна для составления точной натальной карты
-              </p>
               <MysticDateScrollPicker value={formData.date} onChange={date => setFormData({
               ...formData,
               date
             })} />
+              <p className="text-xs text-muted-foreground/80 leading-relaxed px-4 text-center">
+                Дата рождения важна для составления точной натальной карты
+              </p>
             </div>
             
             {/* Button */}
