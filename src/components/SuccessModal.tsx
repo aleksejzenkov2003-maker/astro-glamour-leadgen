@@ -77,7 +77,7 @@ const SuccessModal = ({ open, onClose, orderNumber }: SuccessModalProps) => {
               </a>
 
               <a
-                href="https://vk.com/adelina_energomentor"
+                href="https://vk.com/im?entrypoint=community_page&media=&sel=-225501418"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
