@@ -48,7 +48,7 @@ const SuccessModal = ({ open, onClose, orderNumber }: SuccessModalProps) => {
                 rel="noopener noreferrer"
                 onClick={() => {
                   if (typeof window !== 'undefined' && (window as any).ym) {
-                    (window as any).ym(105525628, 'reachGoal', 'messenger_whatsapp');
+                    (window as any).ym(106826948, 'reachGoal', 'messenger_whatsapp');
                   }
                 }}
                 className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20BA5A] text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 hover:scale-105"
@@ -65,7 +65,7 @@ const SuccessModal = ({ open, onClose, orderNumber }: SuccessModalProps) => {
                 rel="noopener noreferrer"
                 onClick={() => {
                   if (typeof window !== 'undefined' && (window as any).ym) {
-                    (window as any).ym(105525628, 'reachGoal', 'messenger_telegram');
+                    (window as any).ym(106826948, 'reachGoal', 'messenger_telegram');
                   }
                 }}
                 className="inline-flex items-center justify-center gap-2 w-full bg-[#0088cc] hover:bg-[#006699] text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 hover:scale-105"
@@ -82,7 +82,7 @@ const SuccessModal = ({ open, onClose, orderNumber }: SuccessModalProps) => {
                 rel="noopener noreferrer"
                 onClick={() => {
                   if (typeof window !== 'undefined' && (window as any).ym) {
-                    (window as any).ym(105525628, 'reachGoal', 'messenger_vk');
+                    (window as any).ym(106826948, 'reachGoal', 'messenger_vk');
                   }
                 }}
                 className="inline-flex items-center justify-center gap-2 w-full bg-[#0077FF] hover:bg-[#0066DD] text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 hover:scale-105"
