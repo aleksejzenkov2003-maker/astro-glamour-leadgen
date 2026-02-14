@@ -27,11 +27,11 @@ const MultiStepQuiz = ({
     // Yandex Metrika goals
     if (typeof window !== 'undefined' && (window as any).ym) {
       if (currentStep === 1) {
-        (window as any).ym(105525628, 'reachGoal', 'date_selected');
+        (window as any).ym(106826948, 'reachGoal', 'date_selected');
       } else if (currentStep === 2) {
-        (window as any).ym(105525628, 'reachGoal', 'city_entered');
+        (window as any).ym(106826948, 'reachGoal', 'city_entered');
       } else if (currentStep === 3) {
-        (window as any).ym(105525628, 'reachGoal', 'time_selected');
+        (window as any).ym(106826948, 'reachGoal', 'time_selected');
       }
     }
 
